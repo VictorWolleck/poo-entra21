@@ -1,57 +1,72 @@
 package entidade;
 
 public class Conta {
-
-	private String numeroDaAgencia;
-	private String numeroDaConta;
+	//Atributos
+	private String numeroAgencia;
+	private String numeroConta;
 	private double saldo;
-
-	public Conta(String numeroDaAgencia, String numeroDaConta, double saldo) {
-		super();
-		this.numeroDaAgencia = numeroDaAgencia;
-		this.numeroDaConta = numeroDaConta;
-		this.saldo = saldo;
-
-	}
-
+	
+	//Construtores
 	public Conta() {
 		super();
 	}
 
-	public double sacar(double saque) {
-		if (saque <= saldo) {
-			return saldo = saldo - saque;
-		} else {
-			return saldo = 0;
+	public Conta(String numeroAgencia, String numeroConta, double saldo) {
+		super();
+		this.numeroAgencia = numeroAgencia;
+		this.numeroConta = numeroConta;
+		this.saldo = saldo;
+	}
+
+	//Métodos
+	public double sacar(double valorSaque) {
+		double valorSaqueEfetivo = 0;
+		
+		if(this.saldo >= valorSaque) {
+			valorSaqueEfetivo = valorSaque;
+		}else {
+			valorSaqueEfetivo = this.saldo;
 		}
+		
+		this.saldo = this.saldo - valorSaqueEfetivo;
+			
+		return valorSaqueEfetivo;		
+	}
+	
+	public void depositar(double valorDeposito) {
+		this.saldo += valorDeposito;
+	}
+	/**
+	 * Atualiza do saldo da conta, aplicando percentual de rendimento
+	 * informado
+	 * 
+	 * @param percentualRendimento o percentual (não dividir por 100)
+	 */
+	public void efetuarRendimento(double percentualRendimento) {
+		double indiceRendimento = percentualRendimento / 100;
+		
+		//this.saldo = saldo * (1 + indiceRendimento);
+		this.saldo += saldo * indiceRendimento;
+	}
+	
+	//Getters e setters
+	public String getNumeroAgencia() {
+		return numeroAgencia;
 	}
 
-	public double depositar(double deposito) {
-		return saldo = (saldo += deposito);
+	public void setNumeroAgencia(String numeroAgencia) {
+		this.numeroAgencia = numeroAgencia;
 	}
 
-	public double efetuarRendimento(double taxaDeRendimento) {
-		return saldo += (taxaDeRendimento / 100) * saldo;
+	public String getNumeroConta() {
+		return numeroConta;
 	}
 
-	public String getNumeroDaAgencia() {
-		return numeroDaAgencia;
-	}
-
-	public void setNumeroDaAgencia(String numeroDaAgencia) {
-		this.numeroDaAgencia = numeroDaAgencia;
-	}
-
-	public String getNumeroDaConta() {
-		return numeroDaConta;
-	}
-
-	public void setNumeroDaConta(String numeroDaConta) {
-		this.numeroDaConta = numeroDaConta;
+	public void setNumeroConta(String numeroConta) {
+		this.numeroConta = numeroConta;
 	}
 
 	public double getSaldo() {
 		return saldo;
 	}
-
 }

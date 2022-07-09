@@ -3,16 +3,33 @@ package entidade;
 public class Funcionario {
 
 	private String nome;
-	private int idade;
-	private double salarioBruto;
-	private String cpf;
-	private String dataDeAdmissão;
+	private double salario;
+	private Endereco endereco;
 
-	public double calcularSalarioLiquido(double salarioBruto) {
+	public Funcionario(String nome, double salario, Endereco endereco) {
+		this.nome = nome;
+		this.salario = salario;
+		this.setEndereco(endereco);
+	}
 
-		double salarioLiquido = salarioBruto * (0.6 / 100);
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Funcionario [nome=" + nome + ", salario=" + salario + ", endereco=" + endereco + "]";
+	}
 
-		return salarioLiquido;
+
+
+
+	public double calcularPagamento() {
+		return this.getSalario() - this.calcularDesconto();
+	}
+
+	private double calcularDesconto() {
+		// TODO usar uma constante para o desconto
+		return this.getSalario() * 0.15;
 	}
 
 	public String getNome() {
@@ -23,36 +40,24 @@ public class Funcionario {
 		this.nome = nome;
 	}
 
-	public int getIdade() {
-		return idade;
+	public double getSalario() {
+		return salario;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setSalario(double salario) {
+		this.salario = salario;
 	}
 
-	public double getSalarioBruto() {
-		return salarioBruto;
+	public void toString(Endereco endereco1) {
+		// TODO Auto-generated method stub
+
 	}
 
-	public void setSalarioBruto(double salarioBruto) {
-		this.salarioBruto = salarioBruto;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getDataDeAdmissão() {
-		return dataDeAdmissão;
-	}
-
-	public void setDataDeAdmissão(String dataDeAdmissão) {
-		this.dataDeAdmissão = dataDeAdmissão;
-	}
-
 }

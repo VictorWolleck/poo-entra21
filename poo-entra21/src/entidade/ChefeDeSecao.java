@@ -2,10 +2,14 @@ package entidade;
 
 public class ChefeDeSecao extends Funcionario {
 
-	public double calcularSalarioLiquido(double salarioBruto) {
-		double adicionalChefe = 300;
-		double salarioLiquido = salarioBruto * (0.6 / 100);
-		return salarioLiquido + adicionalChefe;
+	public ChefeDeSecao(String nome, double salario) {
+		super(nome, salario);
+		
 	}
-
+	public double calcularSalarioLiquido() {
+		return calcularSalarioLiquido() + calcularAdicional();
+	}
+	public double calcularAdicional() {
+		return 300;
+	}
 }
