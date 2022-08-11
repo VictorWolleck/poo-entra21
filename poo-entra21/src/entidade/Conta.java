@@ -1,14 +1,14 @@
 package entidade;
 
 public class Conta {
-	//Atributos
+	// Atributos
 	private String numeroAgencia;
 	private String numeroConta;
 	private double saldo;
-	
-	//Construtores
+
+	// Construtores
 	public Conta() {
-		super();
+		// super();
 	}
 
 	public Conta(String numeroAgencia, String numeroConta, double saldo) {
@@ -18,38 +18,38 @@ public class Conta {
 		this.saldo = saldo;
 	}
 
-	//Métodos
+	// Métodos
 	public double sacar(double valorSaque) {
 		double valorSaqueEfetivo = 0;
-		
-		if(this.saldo >= valorSaque) {
+
+		if (this.saldo >= valorSaque) {
 			valorSaqueEfetivo = valorSaque;
-		}else {
+		} else {
 			valorSaqueEfetivo = this.saldo;
 		}
-		
+
 		this.saldo = this.saldo - valorSaqueEfetivo;
-			
-		return valorSaqueEfetivo;		
+
+		return valorSaqueEfetivo;
 	}
-	
+
 	public void depositar(double valorDeposito) {
 		this.saldo += valorDeposito;
 	}
+
 	/**
-	 * Atualiza do saldo da conta, aplicando percentual de rendimento
-	 * informado
+	 * Atualiza do saldo da conta, aplicando percentual de rendimento informado
 	 * 
 	 * @param percentualRendimento o percentual (não dividir por 100)
 	 */
 	public void efetuarRendimento(double percentualRendimento) {
 		double indiceRendimento = percentualRendimento / 100;
-		
-		//this.saldo = saldo * (1 + indiceRendimento);
+
+		// this.saldo = saldo * (1 + indiceRendimento);
 		this.saldo += saldo * indiceRendimento;
 	}
-	
-	//Getters e setters
+
+	// Getters e setters
 	public String getNumeroAgencia() {
 		return numeroAgencia;
 	}

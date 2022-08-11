@@ -1,77 +1,53 @@
 package entidade;
 
-public class Pessoa {
+import java.util.ArrayList;
 
-	private String cpf;
+public abstract class Pessoa {
+
 	private String nome;
-	private String dataNascimento;
-	private double alturaEmMetros;
-	private char sexo;
+	private boolean adimplente;
+	private ArrayList<Conta> contas;
 
 	public Pessoa() {
-
-	}
-
-	public Pessoa(String nomeDaPessoa, String cpf) {
-		this.nome = nomeDaPessoa;
-		this.cpf = cpf;
-	}
-
-	public Pessoa(String cpf, String nome, String dataNascimento, double alturaEmMetros, char sexo) {
 		super();
-		this.cpf = cpf;
+	}
+
+	public Pessoa(String nome, boolean adimplente, ArrayList<Conta> contas) {
+		super();
 		this.nome = nome;
-		this.dataNascimento = dataNascimento;
-		this.alturaEmMetros = alturaEmMetros;
-		this.sexo = sexo;
+		this.adimplente = adimplente;
+		this.contas = contas;
 	}
 
-	public int calcularIdade(int anoAtual) {
-		int idade = 0;
+	public abstract boolean verificarAdimplente();
 
-		String anoNascimento = this.dataNascimento.substring(6);
-		idade = anoAtual - Integer.valueOf(anoNascimento);
-
-		return idade;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	@Override
+	public String toString() {
+		return "Pessoa [nome=" + nome + ", adimplente=" + adimplente + "]";
 	}
 
 	public String getNome() {
-		return this.nome;
+		return nome;
 	}
 
-	public void setNome(String novoNome) {
-		this.nome = novoNome;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getDataNascimento() {
-		return dataNascimento;
+	public boolean isAdimplente() {
+		return adimplente;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setAdimplente(boolean adimplente) {
+		this.adimplente = adimplente;
 	}
 
-	public double getAlturaEmMetros() {
-		return alturaEmMetros;
+	public ArrayList<Conta> getContas() {
+		return contas;
 	}
 
-	public void setAlturaEmMetros(double alturaEmMetros) {
-		this.alturaEmMetros = alturaEmMetros;
+	public void setContas(ArrayList<Conta> contas) {
+		this.contas = contas;
 	}
 
-	public char getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(char sexo) {
-		this.sexo = sexo;
-	}
 }

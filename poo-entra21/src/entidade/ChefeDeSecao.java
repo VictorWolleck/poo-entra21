@@ -2,8 +2,8 @@ package entidade;
 
 public class ChefeDeSecao extends Funcionario {
 
-	public ChefeDeSecao(String nome, double salario) {
-		super(nome, salario);
+	public ChefeDeSecao(String nome, double salario, Endereco endereco) {
+		super(nome, salario, endereco);
 		
 	}
 	public double calcularSalarioLiquido() {

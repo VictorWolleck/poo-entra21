@@ -1,11 +1,22 @@
-package entidade;
+package model.entities;
+
+import java.util.Date;
 
 public class Vacina {
-
+	
+	private int id;
 	private String pais;
 	private int estagioDePesquisa;
-	private String inicioDaPesquisa;
+	private Date inicioDaPesquisa;
 	private String pesquisadorResponsavel;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getPais() {
 		return pais;
@@ -23,11 +34,11 @@ public class Vacina {
 		this.estagioDePesquisa = estagioDePesquisa;
 	}
 
-	public String getInicioDaPesquisa() {
+	public Date getInicioDaPesquisa() {
 		return inicioDaPesquisa;
 	}
 
-	public void setInicioDaPesquisa(String inicioDaPesquisa) {
+	public void setInicioDaPesquisa(Date inicioDaPesquisa) {
 		this.inicioDaPesquisa = inicioDaPesquisa;
 	}
 
