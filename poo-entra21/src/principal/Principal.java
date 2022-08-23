@@ -1,13 +1,28 @@
 package principal;
 
-import model.repository.VacinaRepository;
+
+
+import model.entities.Pesquisador;
+
+import model.repository.PesquisadorRepository;
+
 
 public class Principal {
 
 	public static void main(String[] args) {
 		
-		VacinaRepository teste = new VacinaRepository();
+		PesquisadorRepository PesquisadorRep = new PesquisadorRepository();
+		Pesquisador roger = new Pesquisador("Son Goku", "12345672364", 123455);
 		
-		teste.pesquisarTodas();
+		
+	
+		
+		PesquisadorRep.consultarPorId(12);
+	
+
+
+		
+		
+		
 	}
 }

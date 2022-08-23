@@ -81,7 +81,7 @@ public class VacinaRepository {
 			int registrosExcluidos = stmt.executeUpdate();
 			excluiu = (registrosExcluidos > 0);
 		} catch (SQLException e) {
-			System.out.println("Erro ao excluir vacina.\nCausa: " + e.getCause());
+			System.out.println("Erro ao excluir vacina.\nCausa: " + e.getMessage());
 		} finally {
 			Banco.closePreparedStatement(stmt);
 			Banco.closeConnection(conexao);
@@ -124,10 +124,10 @@ public class VacinaRepository {
 
 	public ArrayList<Vacina> pesquisarTodas() {
 
-		ArrayList<Vacina> vacinaRepository = new ArrayList<Vacina>();
-		Vacina vacinaBuscada = null;
+		ArrayList<Vacina> vacinas = new ArrayList<Vacina>();
+
 		Connection conexao = Banco.getConnection();
-		String sql = "SELECT * FROM VACINAS\r\n";
+		String sql = " SELECT * FROM VACINAS ";
 
 		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);
 
@@ -135,13 +135,14 @@ public class VacinaRepository {
 			ResultSet resultado = stmt.executeQuery();
 
 			while (resultado.next()) {
-				vacinaBuscada = new Vacina();
+
+				Vacina vacinaBuscada = new Vacina();
 				vacinaBuscada.setId(resultado.getInt("id"));
 				vacinaBuscada.setEstagioDePesquisa(resultado.getInt("estagio_pesquisa"));
 				vacinaBuscada.setPesquisadorResponsavel(resultado.getString("nome_responsavel"));
 				vacinaBuscada.setPais(resultado.getString("pais_origem"));
 				vacinaBuscada.setInicioDaPesquisa(resultado.getDate("data_inicio_pesquisa"));
-				vacinaRepository.add(vacinaBuscada);
+				vacinas.add(vacinaBuscada);
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro ao buscar vacinas =.\nCausa" + e.getCause());
@@ -150,7 +151,7 @@ public class VacinaRepository {
 			Banco.closeConnection(conexao);
 		}
 
-		return null;
+		return vacinas;
 	}
 
 }

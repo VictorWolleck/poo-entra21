@@ -9,7 +9,7 @@ public class PessoaJuridica extends Pessoa {
 	}
 
 	public PessoaJuridica(String nome, boolean adimplente) {
-		super(nome, adimplente);
+	//	super(nome, adimplente);
 
 	}
 

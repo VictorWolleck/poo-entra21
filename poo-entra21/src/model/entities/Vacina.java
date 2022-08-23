@@ -10,6 +10,12 @@ public class Vacina {
 	private Date inicioDaPesquisa;
 	private String pesquisadorResponsavel;
 
+	@Override
+	public String toString() {
+		return "Vacina [id=" + id + ", pais=" + pais + ", estagioDePesquisa=" + estagioDePesquisa
+				+ ", inicioDaPesquisa=" + inicioDaPesquisa + ", pesquisadorResponsavel=" + pesquisadorResponsavel + "]";
+	}
+
 	public int getId() {
 		return id;
 	}
